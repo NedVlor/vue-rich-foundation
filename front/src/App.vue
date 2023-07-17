@@ -18,26 +18,6 @@
 import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import { ref, onMounted } from 'vue'
-const drawer= ref(false)
-const group=ref(null)
-const items=ref( [
-        {
-          title: 'Foo',
-          value: 'foo',
-        },
-        {
-          title: 'Bar',
-          value: 'bar',
-        },
-        {
-          title: 'Fizz',
-          value: 'fizz',
-        },
-        {
-          title: 'Buzz',
-          value: 'buzz',
-        },
-      ])
 let counter = ref(0);  //
 function add(){
 counter.value++;
