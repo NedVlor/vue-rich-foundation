@@ -35,10 +35,10 @@
 	{{counter}}
 	<v-btn icon="mdi-minus-thick" variant="tonal" @click="remove"></v-btn>
 	<v-btn icon="mdi-plus-thick" variant="tonal" @click="add"></v-btn>
-<Footer/>
       </v-main>
     </v-layout>
   </v-card>
+  <Footer/>
 </template>
 
 <script setup>
