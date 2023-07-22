@@ -7,7 +7,7 @@
 <hr>
 <div class="card-wrapper">
   <v-card
- v-for="item in users" :key="item"
+ v-for="(item,i) in users" :key="item"
     class="mx-auto"
     max-width="344"
   >
@@ -37,12 +37,12 @@
 
       <v-btn
         :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
+        @click="show[i] = !show[i]"
       ></v-btn>
     </v-card-actions>
 
     <v-expand-transition>
-      <div v-show="show">
+      <div v-show="show[i]">
         <v-divider></v-divider>
 
         <v-card-text>
@@ -68,7 +68,7 @@ counter.value--;
 console.log(counter.value);
 }
 const users = ref(null);
-const show = ref(false);
+const show = ref([]);
 fetch('https://api.github.com/users')
     .then(response => response.json())
     .then(data => { 
@@ -90,4 +90,7 @@ fetch('https://api.github.com/users')
 display: flex;
 flex-wrap: wrap;
 }
+.v-card{
+margin:1rem;
+    }
 </style>
