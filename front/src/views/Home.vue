@@ -7,7 +7,7 @@
 <hr>
 <div class="card-wrapper">
   <v-card
- v-for="item in products" :key="item"
+ v-for="item in users" :key="item"
     class="mx-auto"
     max-width="344"
   >
@@ -22,7 +22,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-      1,000 miles of wonder
+      {{item.repos?.length}} repos
     </v-card-subtitle>
 
     <v-card-actions>
@@ -46,7 +46,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+        <div v-for="item in item.repos" :key="item">{{item.name}}</div> 
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -67,13 +67,21 @@ function remove(){
 counter.value--;
 console.log(counter.value);
 }
-const products = ref(null);
+const users = ref(null);
 const show = ref(false);
 fetch('https://api.github.com/users')
     .then(response => response.json())
     .then(data => { 
-        products.value = data;
+        users.value = data;
         console.log(data)
+        data.forEach((user,i)=>{
+            fetch(user.repos_url)
+            .then(response => response.json())
+             .then(data => {
+                console.log(data.length);
+                users.value[i].repos=data;
+                 })
+            })
         });
 </script>
 
