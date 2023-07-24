@@ -6,6 +6,7 @@
 
   <hr />
   <div class="card-wrapper">
+    <Card v-for="(item, i) in users" :key="i" :item="item" />
     <v-card
       v-for="(item, i) in users"
       :key="item"
@@ -46,6 +47,7 @@
 
 <script setup>
 import HelloWorld from "@/components/HelloWorld.vue";
+import Card from "@/components/Card.vue";
 import { ref, onMounted } from "vue";
 let counter = ref(0); //
 function add() {
