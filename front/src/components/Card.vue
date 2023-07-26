@@ -40,7 +40,7 @@ const props = defineProps({
 const item = ref(props.item);
 let show = ref(false);
 onMounted(() => {
-  console.log(props.item);
+  //  console.log(props.item);
   //item.value=props.item
 });
 </script>

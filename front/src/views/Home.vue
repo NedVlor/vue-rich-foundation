@@ -30,6 +30,11 @@ fetch("https://api.github.com/users")
   .then((data) => {
     users.value = data;
     console.log(data);
+    fetch("https://api.github.com/users?since=46")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
     data.forEach((user, i) => {
       fetch(user.repos_url)
         .then((response) => response.json())
