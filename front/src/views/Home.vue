@@ -37,33 +37,14 @@ async function run() {
   const data2 = await responce2.json();
   console.log(data2);
   // 3
-  data.forEach((user, i) => {
-       const responce3 = await fetch(user.repos_url);
-       const data3 = await responce3.json();
-       console.log(data.length);
-       users.value[i].repos = data;
+  data.forEach(async (user, i) => {
+    const responce3 = await fetch(user.repos_url);
+    const data3 = await responce3.json();
+    console.log(data.length);
+    users.value[i].repos = data;
   });
 }
-
-fetch("https://api.github.com/users")
-  .then((response) => response.json())
-  .then((data) => {
-    users.value = data;
-    console.log(data);
-    fetch("https://api.github.com/users?since=46")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-    data.forEach((user, i) => {
-      fetch(user.repos_url)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data.length);
-          users.value[i].repos = data;
-        });
-    });
-  });
+run();
 </script>
 
 <style>
