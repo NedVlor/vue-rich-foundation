@@ -6,7 +6,7 @@
 
   <hr />
   <div class="card-wrapper">
-    <Card v-for="(item, i) in users" :key="i" :item="item" />
+    <Card v-for="(item, i) in usersStore.users" :key="i" :item="item" />
   </div>
 </template>
 
@@ -14,6 +14,8 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import Card from "@/components/Card.vue";
 import { ref, onMounted } from "vue";
+import { useUsersStore } from "@/store/users.js";
+const usersStore = useUsersStore();
 let counter = ref(0); //
 function add() {
   counter.value++;
@@ -44,7 +46,8 @@ async function run() {
     users.value[i].repos = data;
   });
 }
-run();
+//run();
+usersStore.get();
 </script>
 
 <style>
