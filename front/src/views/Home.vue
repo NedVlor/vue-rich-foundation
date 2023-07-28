@@ -25,28 +25,7 @@ function remove() {
   counter.value--;
   console.log(counter.value);
 }
-const users = ref(null);
-const show = ref([]);
 
-async function run() {
-  // 1
-  const responce = await fetch("https://api.github.com/users");
-  const data = await responce.json();
-  users.value = data;
-  console.log(data);
-  // 2
-  const responce2 = await fetch("https://api.github.com/users?since=46");
-  const data2 = await responce2.json();
-  console.log(data2);
-  // 3
-  data.forEach(async (user, i) => {
-    const responce3 = await fetch(user.repos_url);
-    const data3 = await responce3.json();
-    console.log(data.length);
-    users.value[i].repos = data;
-  });
-}
-//run();
 usersStore.get();
 </script>
 
