@@ -14,9 +14,9 @@ export const useUsersStore = defineStore("user", {
     },
   },
   actions: {
-    async get() {
+    async get(query) {
       // 1
-      const responce = await fetch("https://api.github.com/users");
+      const responce = await fetch(´https:/`+`/api.github.com/users?q=${query}´);
       this.users = await responce.json();
       log(this.users);
       // 2

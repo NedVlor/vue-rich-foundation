@@ -17,9 +17,8 @@
       single-line
       hide-details
       @click:append-inner="onClick"
+      v-model="query"
     ></v-text-field>
-
-    <v-btn variant="text" icon="mdi-magnify"></v-btn>
 
     <v-btn variant="text" icon="mdi-filter"></v-btn>
 
@@ -33,11 +32,15 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useUsersStore } from "@/store/users.js";
+const usersStore = useUsersStore();
 const loaded = ref(false);
 const loading = ref(false);
+const query = ref("");
 function onClick() {
   loading.value = true;
-
+  usersStore.get(query.value);
+  console.log(query.value);
   setTimeout(() => {
     loading.value = false;
     loaded.value = true;
