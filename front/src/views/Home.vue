@@ -1,6 +1,8 @@
 <template>
   <div class="card-wrapper">
-    <Card v-for="(item, i) in usersStore.users" :key="i" :item="item" />
+    <div v-for="(item, i) in usersStore.users" :key="i + 'card'">
+      <Card :item="item" />
+    </div>
   </div>
 </template>
 

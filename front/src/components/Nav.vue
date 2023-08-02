@@ -39,7 +39,7 @@ const loading = ref(false);
 const query = ref("");
 function onClick() {
   loading.value = true;
-  usersStore.get(query.value);
+  usersStore.search(query.value);
   console.log(query.value);
   setTimeout(() => {
     loading.value = false;
