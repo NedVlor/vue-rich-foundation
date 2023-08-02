@@ -19,7 +19,11 @@ export const useUsersStore = defineStore("user", {
       const responce2 = await fetch(
         "https://api.github.com/users?since=" + since,
       );
-      this.users = await responce2.json();
+      const result = await responce2.json();
+      this.users = [];
+      setTimeout(() => {
+        this.users = result;
+      }, 100);
       // 3
       /* this.users.forEach(async (user, i) => {
         const responce3 = await fetch(user.repos_url);
