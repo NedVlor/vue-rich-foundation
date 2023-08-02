@@ -23,6 +23,10 @@ usersStore.get();
 
 function previous() {
   console.log("one");
+  const last = usersStore.users.pop();
+  let sinse = last.id - 60;
+  if (sinse < 0) sinse = 0;
+  usersStore.get(sinse);
 }
 
 function next() {
