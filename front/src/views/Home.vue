@@ -1,7 +1,11 @@
 <template>
-  <div class="card-wrapper">
-    <div v-for="(item, i) in usersStore.users" :key="i + 'card'">
-      <Card :item="item" />
+  <div>
+    <v-btn prepend-icon="mdi-arrow-left" variant="text"> Previous</v-btn>
+    <v-btn append-icon="mdi-arrow-right" variant="text"> Next</v-btn>
+    <div class="card-wrapper">
+      <div v-for="(item, i) in usersStore.users" :key="i + 'card'">
+        <Card :item="item" />
+      </div>
     </div>
   </div>
 </template>
