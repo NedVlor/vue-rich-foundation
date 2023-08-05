@@ -3,6 +3,18 @@
     <v-btn prepend-icon="mdi-arrow-left" variant="text" @click="previous">
       Previous</v-btn
     >
+    <v-text-field
+      :loading="loading"
+      density="compact"
+      label="Search templates"
+      append-inner-icon="mdi-magnify"
+      single-line
+      hide-details
+      @click:append-inner="specific"
+      v-model="fromUserId"
+      type="number"
+    ></v-text-field>
+
     <v-btn append-icon="mdi-arrow-right" variant="text" @click="next">
       Next</v-btn
     >
@@ -29,6 +41,12 @@ function previous() {
   usersStore.get(sinse);
 }
 
+const loading = ref(false);
+const fromUserId = ref(0);
+function specific() {
+  console.log(fromUserId.value);
+  usersStore.get(fromUserId.value);
+}
 function next() {
   const last = usersStore.users.pop();
   const sinse = last.id + 1;
