@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-btn prepend-icon="mdi-arrow-left" variant="text" @click="previous">
-      Previous</v-btn
+    <v-btn prepend-icon="mdi-arrow-left" variant="text" @click="begin">
+      Begin</v-btn
     >
     <v-text-field
       :loading="loading"
@@ -33,12 +33,8 @@ import { useUsersStore } from "@/store/users.js";
 const usersStore = useUsersStore();
 usersStore.get();
 
-function previous() {
-  console.log("one");
-  const last = usersStore.users.pop();
-  let sinse = last.id - 60;
-  if (sinse < 0) sinse = 0;
-  usersStore.get(sinse);
+function begin() {
+  usersStore.get(0);
 }
 
 const loading = ref(false);
