@@ -15,7 +15,7 @@
 
       <v-btn
         :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
+        @click="explore"
       ></v-btn>
     </v-card-actions>
 
@@ -32,6 +32,8 @@
 </template>
 <script setup>
 import { defineProps, onMounted, ref } from "vue";
+import { useUsersStore } from "@/store/users.js";
+const usersStore = useUsersStore();
 const props = defineProps({
   item: Object, // use the correct type for the 'item' prop
 });
@@ -43,5 +45,9 @@ onMounted(() => {
   //  console.log(props.item);
   //item.value=props.item
 });
+function explore() {
+  usersStore.getAdditionalInfo(item.value.id);
+  show.value = !show.value;
+}
 </script>
 <style></style>

@@ -32,6 +32,17 @@ export const useUsersStore = defineStore("user", {
         this.users[i].repos = data3;
       });*/
     },
+    async getAdditionalInfo(id) {
+      log(id);
+      this.users.forEach(async (user, i) => {
+        if (id == user.id) {
+          const responce3 = await fetch(user.repos_url);
+          const data3 = await responce3.json();
+          log(data3.length);
+          this.users[i].repos = data3;
+        }
+      });
+    },
     async search(query) {
       if (!query) return;
       const responce = await fetch(
