@@ -1,5 +1,8 @@
 //ilities
 const log = console.log;
+function pause(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 import { defineStore } from "pinia";
 
 export const useUsersStore = defineStore("user", {
@@ -20,9 +23,8 @@ export const useUsersStore = defineStore("user", {
       );
       const result = await responce2.json();
       this.users = [];
-      setTimeout(() => {
-        this.users = result;
-      }, 100);
+      //await pause(100);
+      this.users = result;
     },
     async getAdditionalInfo(id) {
       log(id);
@@ -42,9 +44,8 @@ export const useUsersStore = defineStore("user", {
       );
       const result = await responce.json();
       this.users = [];
-      setTimeout(() => {
-        this.users = result.items;
-      }, 100);
+      //await pause(100);
+      this.users = result.items;
       log(this.users);
     },
   },
