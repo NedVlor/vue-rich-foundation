@@ -38,6 +38,7 @@ usersStore.get();
 
 function begin() {
   usersStore.get(0);
+  usersStore.query = "";
 }
 
 const loading = ref(false);
@@ -45,12 +46,14 @@ const fromUserId = ref(0);
 function specific() {
   console.log(fromUserId.value);
   usersStore.get(fromUserId.value);
+  usersStore.query = "";
 }
 function next() {
   const last = usersStore.users.pop();
   const sinse = last.id + 1;
   usersStore.get(sinse);
   console.log("two", last);
+  usersStore.query = "";
 }
 </script>
 

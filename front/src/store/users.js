@@ -10,6 +10,7 @@ export const useUsersStore = defineStore("user", {
     pointer: 1,
     users: [],
     usersFiltered: [],
+    query: "",
   }),
   getters: {
     someGetter() {

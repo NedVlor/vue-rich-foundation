@@ -17,7 +17,7 @@
       single-line
       hide-details
       @click:append-inner="onClick"
-      v-model="query"
+      v-model="usersStore.query"
     ></v-text-field>
 
     <v-btn variant="text" icon="mdi-filter"></v-btn>
@@ -36,11 +36,9 @@ import { useUsersStore } from "@/store/users.js";
 const usersStore = useUsersStore();
 const loaded = ref(false);
 const loading = ref(false);
-const query = ref("");
 function onClick() {
   loading.value = true;
-  usersStore.search(query.value);
-  console.log(query.value);
+  usersStore.search(usersStore.query);
   setTimeout(() => {
     loading.value = false;
     loaded.value = true;
