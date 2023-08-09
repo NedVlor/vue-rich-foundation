@@ -23,7 +23,7 @@ export const useUsersStore = defineStore("user", {
       );
       const result = await responce2.json();
       this.users = [];
-      //await pause(100);
+      await pause(100);
       this.users = result;
     },
     async getAdditionalInfo(id) {
@@ -44,7 +44,7 @@ export const useUsersStore = defineStore("user", {
       );
       const result = await responce.json();
       this.users = [];
-      //await pause(100);
+      await pause(100);
       this.users = result.items;
       log(this.users);
     },
